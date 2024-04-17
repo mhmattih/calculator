@@ -26,16 +26,7 @@ Clearing history display
 
 
 User Interface
---------------------------------
-| "DISPLAY"     | "HISTORY"    |
-| 1+2           | 9+9=18       |
-|---------------| 1+10=12      |
-| CE| CH|<= | / |              |
-| 7 | 8 | 9 | * |              |
-| 4 | 5 | 6 | - |              |
-| 1 | 2 | 3 | + |              |
-|+/-| 0 | , | = |              |
---------------------------------
+UI design is depicted in the attached picture (ui-design.png).
 
 
 
