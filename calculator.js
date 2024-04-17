@@ -61,3 +61,14 @@ function operate(firstValue,operator,secondValue){
     }
     return returnValue;
 }
+
+function displayAction(event){
+    console.log("button clicked!,",event);
+
+
+    // event.target.innerText <-- text from button
+}
+
+// Add event listener to all buttons for clicking
+const buttons = Array.from(document.querySelectorAll('button'));
+buttons.forEach((button) => button.addEventListener('click', displayAction));
