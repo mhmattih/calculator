@@ -11,7 +11,15 @@ function multiply(firstValue,secondValue){
 }
 
 function divide(firstValue,secondValue){
-    return firstValue / secondValue;
+    if (secondValue == 0){
+        console.log("NOTICE! divide by 0");
+        return NaN;
+    }
+    else
+    {   
+        return firstValue / secondValue;
+    }
+
 }
 
 function checkValues(firstValue,secondValue){
