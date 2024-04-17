@@ -63,11 +63,44 @@ function operate(firstValue,operator,secondValue){
 }
 
 function displayAction(event){
-    console.log("button clicked!,",event);
+    console.log("button clicked!,",event.target.id);
 
+    // A number was pressed
+    /*
+    if (pressedButtonIsNumber(event.target.id)){
+        
+    }*/
+    clickedItems+=event.target.innerText;
+
+    displayResultMainDisplay(clickedItems);
+    // 1. Enter first value of the calculation (can contain many numbers)
+    // 2. When an operand is pressed first value can be converted to as firstValue
+    // 3. Only one operand is allowed
+    // 4. Second value can be entered and after the equals button or other operand is 
+    // pressed second value can be converted as secondValue and calculation is executed 
+    // and displayed main display and in history display.
+    // if other operand was pressed, sum of the calculation will be used as firstValue of 
+    // following calculation
 
     // event.target.innerText <-- text from button
+    // event.target.id <--id of button
 }
+
+function displayResultMainDisplay(text){
+    console.log("Add text:",text);
+    mainDisplay.textContent = text;
+}
+/*
+function pressedButtonIsNumber(buttonid){
+    
+
+    return true;
+}*/
+
+
+const mainDisplay = document.querySelector('#mainDisplayFrame');
+let calculation = [];
+let clickedItems ="";
 
 // Add event listener to all buttons for clicking
 const buttons = Array.from(document.querySelectorAll('button'));
