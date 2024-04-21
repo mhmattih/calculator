@@ -196,6 +196,18 @@ function displayValue(event){
 
 }
 
+function displayCalculation(event){
+    
+
+
+}
+
+function displayCalculationResult(event){
+    
+
+
+}
+
 const mainDisplay = document.querySelector('#mainDisplayFrame');
 const historyDisplay = document.querySelector('#historyDisplayFrame');
 
@@ -212,8 +224,14 @@ ceButton.addEventListener('click',clearMainDisplay);
 const chButton = document.querySelector('#chButton');
 chButton.addEventListener('click',clearHistoryDisplay);
 
+const equalsButton = document.querySelector('#equalsButton');
+equalsButton.addEventListener('click',displayCalculationResult);
+
 const valueButtons = Array.from(document.querySelectorAll('.valueButton'));
 valueButtons.forEach((button) => button.addEventListener('click', displayValue));
+
+const calcButtons = Array.from(document.querySelectorAll('.calcButton'));
+calcButtons.forEach((button) => button.addEventListener('click', displayCalculation));
 
 //eventListener for setting a value (+/- , 0 1 2 3 4 5 6 7 8 9 --> setValue)
 //eventListener for calc-buttons (/ * - +  = --> displayCalculation)
