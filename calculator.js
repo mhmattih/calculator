@@ -153,12 +153,14 @@ function initializeCalculation(){
     secondValueNumber = 0;
     dotIncludedFirstValue = false;
     dotIncludedSecondValue = false;
+    operator = "";
+    calculationString = "";
 
 }
 
 function displayValue(event){
 
-    if (secondValueNumber === 0){
+    if (operator == ""){
 
         // Not allowing another dot to be included in the value
         if (!(dotIncludedFirstValue == true && event.target.id == 'dotButton')){
@@ -176,7 +178,6 @@ function displayValue(event){
         displayResultMainDisplay(firstValue);
 
     }
-    /*
     else{
         // Not allowing another dot to be included in the value
         if (!(dotIncludedSecondValue == true && event.target.id == 'dotButton')){
@@ -191,19 +192,65 @@ function displayValue(event){
         
         console.log("value:",secondValue);
         console.log("valueNumber:",secondValueNumber);
-
-    }*/
+        calculationString += event.target.innerText;
+        displayResultMainDisplay(calculationString);
+        
+    }
+    console.log("number pressed");
+    console.log("firstValue:",firstValue);
+    console.log("secondValue:",secondValue);
+    console.log("operator:",operator);
+    console.log("calculationString:",calculationString);
 
 }
 
 function displayCalculation(event){
-    
 
+    // operator can be pressed only once
+    if (operator == "" && firstValue != ""){
+        operator = event.target.innerText;
+        calculationString += firstValue;
+        calculationString += operator;
+        displayResultMainDisplay(calculationString);
+    }
+    else if (firstValue != "" && operator != "" && secondValue != ""){
+        console.log("Another operator");
+        calculationString = "";
+        firstValueNumber = Number(firstValue);
+        secondValueNumber = Number(secondValue);
+        firstValue = operate(firstValueNumber,operator,secondValueNumber);
+        calculationString += firstValue;
+        calculationString += event.target.innerText;
+        displayResultMainDisplay(calculationString);
+        secondValue = "";
+        dotIncludedSecondValue = false;
+        operator = event.target.innerText;
+
+    }
+    console.log("calc pressed");
+    console.log("firstValue:",firstValue);
+    console.log("secondValue:",secondValue);
+    console.log("operator:",operator);
+    console.log("calculationString:",calculationString);
 
 }
 
 function displayCalculationResult(event){
-    
+
+    if (firstValue != "" && secondValue != "" && operator != ""){
+        console.log("Calculation can be done!");
+        calculationString += event.target.innerText;
+        firstValueNumber = Number(firstValue);
+        secondValueNumber = Number(secondValue);
+        calculationString += operate(firstValueNumber,operator,secondValueNumber);
+        displayResultMainDisplay(calculationString);
+    }
+    console.log("= pressed");
+    console.log("firstValue:",firstValue);
+    console.log("secondValue:",secondValue);
+    console.log("operator:",operator);
+    console.log("calculationString:",calculationString);
+    initializeCalculation();
 
 
 }
@@ -217,6 +264,8 @@ let dotIncludedFirstValue = false;
 let secondValue = "";
 let secondValueNumber = 0;
 let dotIncludedSecondValue = false;
+let operator = "";
+let calculationString = "";
 
 const ceButton = document.querySelector('#ceButton');
 ceButton.addEventListener('click',clearMainDisplay);
