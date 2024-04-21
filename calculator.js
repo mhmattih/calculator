@@ -151,33 +151,48 @@ function initializeCalculation(){
     firstValueNumber = 0;
     secondValue = "";
     secondValueNumber = 0;
-    dotIncluded = false;
+    dotIncludedFirstValue = false;
+    dotIncludedSecondValue = false;
 
 }
 
-function setValue(event){
+function displayValue(event){
 
     if (secondValueNumber === 0){
 
         // Not allowing another dot to be included in the value
-        if (!(dotIncluded == true && event.target.id == 'dotButton')){
+        if (!(dotIncludedFirstValue == true && event.target.id == 'dotButton')){
 
             firstValue += event.target.innerText;
             firstValueNumber = Number(firstValue);
         }
 
         if (event.target.id == 'dotButton'){
-            dotIncluded = true;
+            dotIncludedFirstValue = true;
         }
-        
+
         console.log("value:",firstValue);
         console.log("valueNumber:",firstValueNumber);
+        displayResultMainDisplay(firstValue);
 
     }
+    /*
     else{
+        // Not allowing another dot to be included in the value
+        if (!(dotIncludedSecondValue == true && event.target.id == 'dotButton')){
 
-    }
+            secondValue += event.target.innerText;
+            secondValueNumber = Number(secondValue);
+        }
+        
+        if (event.target.id == 'dotButton'){
+            dotIncludedSecondValue = true;
+        }
+        
+        console.log("value:",secondValue);
+        console.log("valueNumber:",secondValueNumber);
 
+    }*/
 
 }
 
@@ -186,11 +201,10 @@ const historyDisplay = document.querySelector('#historyDisplayFrame');
 
 let firstValue = "";
 let firstValueNumber = 0;
+let dotIncludedFirstValue = false;
 let secondValue = "";
 let secondValueNumber = 0;
-let dotIncluded = false;
-
-
+let dotIncludedSecondValue = false;
 
 const ceButton = document.querySelector('#ceButton');
 ceButton.addEventListener('click',clearMainDisplay);
@@ -199,7 +213,7 @@ const chButton = document.querySelector('#chButton');
 chButton.addEventListener('click',clearHistoryDisplay);
 
 const valueButtons = Array.from(document.querySelectorAll('.valueButton'));
-valueButtons.forEach((button) => button.addEventListener('click', setValue));
+valueButtons.forEach((button) => button.addEventListener('click', displayValue));
 
 //eventListener for setting a value (+/- , 0 1 2 3 4 5 6 7 8 9 --> setValue)
 //eventListener for calc-buttons (/ * - +  = --> displayCalculation)
