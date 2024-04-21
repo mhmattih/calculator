@@ -61,7 +61,7 @@ function operate(firstValue,operator,secondValue){
     }
     return returnValue;
 }
-
+/*
 function displayCalculation(event){
 
     // A number was pressed 
@@ -128,9 +128,18 @@ function displayCalculation(event){
     // event.target.id <--id of button
     // event.target.classList.contains("number") <-- check is class included
 }
-
+// Add event listener to all buttons for clicking
+const buttons = Array.from(document.querySelectorAll('button'));
+buttons.forEach((button) => button.addEventListener('click', displayCalculation));
+*/
 function displayResultMainDisplay(text){
     mainDisplay.textContent = text;
+}
+function clearMainDisplay(event){
+    console.log("clear Main Display");
+}
+function clearHistoryDisplay(event){
+    console.log("clear History Display");
 }
 
 const mainDisplay = document.querySelector('#mainDisplayFrame');
@@ -143,6 +152,28 @@ let operatorPressedLast = false;
 let numberPressedLast = false;
 let equalsPressedLast = false;
 
-// Add event listener to all buttons for clicking
-const buttons = Array.from(document.querySelectorAll('button'));
-buttons.forEach((button) => button.addEventListener('click', displayCalculation));
+const ceButton = document.querySelector('#ceButton');
+ceButton.addEventListener('click',clearMainDisplay);
+
+const chButton = document.querySelector('#chButton');
+chButton.addEventListener('click',clearHistoryDisplay);
+
+
+//eventListener for setting a value (+/- , 0 1 2 3 4 5 6 7 8 9 --> setValue)
+//eventListener for calc-buttons (/ * - +  = --> displayCalculation)
+//eventListener for CE 
+//eventListener for CH
+
+/*
+global variables 
+- let firstValue = 0;
+- let secondValue = 0;
+- let operator = "";
+
+function initializeValues{
+    firstValue = "";
+    secondValue = "";
+    operator = "";
+}
+
+*/
