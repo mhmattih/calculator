@@ -138,27 +138,59 @@ function displayResultMainDisplay(text){
 
 function clearMainDisplay(){
     mainDisplay.textContent = "";
+    initializeCalculation();
 }
 
 function clearHistoryDisplay(){
     historyDisplay.textContent = "";
 }
 
+function initializeCalculation(){
+
+    firstValue = "";
+    firstValueNumber = 0;
+    secondValue = "";
+    secondValueNumber = 0;
+    dotIncluded = false;
+
+}
+
 function setValue(event){
-    console.log("valuebutton pressed");
+
+    if (secondValueNumber === 0){
+
+        // Not allowing another dot to be included in the value
+        if (!(dotIncluded == true && event.target.id == 'dotButton')){
+
+            firstValue += event.target.innerText;
+            firstValueNumber = Number(firstValue);
+        }
+
+        if (event.target.id == 'dotButton'){
+            dotIncluded = true;
+        }
+        
+        console.log("value:",firstValue);
+        console.log("valueNumber:",firstValueNumber);
+
+    }
+    else{
+
+    }
+
+
 }
 
 const mainDisplay = document.querySelector('#mainDisplayFrame');
 const historyDisplay = document.querySelector('#historyDisplayFrame');
 
-let calculation = "";
-let valueString = "";
 let firstValue = "";
+let firstValueNumber = 0;
 let secondValue = "";
-let operator = "";
-let operatorPressedLast = false;
-let numberPressedLast = false;
-let equalsPressedLast = false;
+let secondValueNumber = 0;
+let dotIncluded = false;
+
+
 
 const ceButton = document.querySelector('#ceButton');
 ceButton.addEventListener('click',clearMainDisplay);
