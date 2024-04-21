@@ -135,12 +135,17 @@ buttons.forEach((button) => button.addEventListener('click', displayCalculation)
 function displayResultMainDisplay(text){
     mainDisplay.textContent = text;
 }
+
 function clearMainDisplay(){
     mainDisplay.textContent = "";
-
 }
+
 function clearHistoryDisplay(){
     historyDisplay.textContent = "";
+}
+
+function setValue(event){
+    console.log("valuebutton pressed");
 }
 
 const mainDisplay = document.querySelector('#mainDisplayFrame');
@@ -161,6 +166,8 @@ ceButton.addEventListener('click',clearMainDisplay);
 const chButton = document.querySelector('#chButton');
 chButton.addEventListener('click',clearHistoryDisplay);
 
+const valueButtons = Array.from(document.querySelectorAll('.valueButton'));
+valueButtons.forEach((button) => button.addEventListener('click', setValue));
 
 //eventListener for setting a value (+/- , 0 1 2 3 4 5 6 7 8 9 --> setValue)
 //eventListener for calc-buttons (/ * - +  = --> displayCalculation)
