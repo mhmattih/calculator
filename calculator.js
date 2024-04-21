@@ -135,14 +135,17 @@ buttons.forEach((button) => button.addEventListener('click', displayCalculation)
 function displayResultMainDisplay(text){
     mainDisplay.textContent = text;
 }
-function clearMainDisplay(event){
-    console.log("clear Main Display");
+function clearMainDisplay(){
+    mainDisplay.textContent = "";
+
 }
-function clearHistoryDisplay(event){
-    console.log("clear History Display");
+function clearHistoryDisplay(){
+    historyDisplay.textContent = "";
 }
 
 const mainDisplay = document.querySelector('#mainDisplayFrame');
+const historyDisplay = document.querySelector('#historyDisplayFrame');
+
 let calculation = "";
 let valueString = "";
 let firstValue = "";
